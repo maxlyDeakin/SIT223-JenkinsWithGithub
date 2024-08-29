@@ -45,7 +45,7 @@ pipeline {
             emailext(
                 subject: "Jenkins Pipeline: ${currentBuild.fullDisplayName} - ${currentBuild.currentResult}",
                 body: """Pipeline ${currentBuild.fullDisplayName} finished with status: ${currentBuild.currentResult}
-                        Check console output at ${env.BUILD_URL}""",
+                        Check console output at """,
                 to: 'maxly746@gmail.com',
                 attachLog: true
             )
