@@ -43,9 +43,8 @@ pipeline {
     post {
         always {
             emailext(
-                subject: "Build ${currentBuild.fullDisplayName} - ${currentBuild.currentResult}",
-                body: """Build ${currentBuild.fullDisplayName} completed with status: ${currentBuild.currentResult}.
-                \nCheck console output at ${env.BUILD_URL} to view the results.""",
+                subject: "Hi",
+                body: """Hello""",
                 to: 'maxly746@gmail.com',
                 attachLog: true
             )
