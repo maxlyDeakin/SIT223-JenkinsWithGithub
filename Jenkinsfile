@@ -39,6 +39,7 @@ pipeline {
                         to: 'maxly746@gmail.com',
                         attachLog: true
                     )
+                }
             }
         }
         stage('Deploy to Staging') {
