@@ -12,17 +12,6 @@ pipeline {
                 echo 'Running unit and integration tests...'
             }
         }
-        post {
-        always {
-            emailext(
-                subject: "Jenkins Pipeline: ${currentBuild.fullDisplayName} - ${currentBuild.currentResult}",
-                body: """Pipeline ${currentBuild.fullDisplayName} finished with status: ${currentBuild.currentResult}
-                        Check console output at """,
-                to: 'maxly746@gmail.com',
-                attachLog: true
-            )
-            }
-        }
         stage('Code Analysis') {
             steps {
                 echo 'Analyzing the code...'
@@ -31,17 +20,6 @@ pipeline {
         stage('Security Scan') {
             steps {
                 echo 'Performing security scan...'
-            }
-        }
-        post {
-        always {
-            emailext(
-                subject: "Jenkins Pipeline: ${currentBuild.fullDisplayName} - ${currentBuild.currentResult}",
-                body: """Pipeline ${currentBuild.fullDisplayName} finished with status: ${currentBuild.currentResult}
-                        Check console output at """,
-                to: 'maxly746@gmail.com',
-                attachLog: true
-            )
             }
         }
         stage('Deploy to Staging') {
@@ -58,6 +36,17 @@ pipeline {
         stage('Deploy to Production') {
             steps {
                 echo 'Deploying to production...'
+            }
+        }
+        post {
+        always {
+            emailext(
+                subject: "Jenkins Pipeline: ${currentBuild.fullDisplayName} - ${currentBuild.currentResult}",
+                body: """Pipeline ${currentBuild.fullDisplayName} finished with status: ${currentBuild.currentResult}
+                        Check console output at """,
+                to: 'maxly746@gmail.com',
+                attachLog: true
+            )
             }
         }
     }
