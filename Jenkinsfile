@@ -14,8 +14,8 @@ pipeline {
             post {
                 always {
                     emailext(
-                        subject: "Build ${currentBuild.currentResult}",
-                        body: "Build ${currentBuild.currentResult}.",
+                        subject: "Test build ${currentBuild.currentResult}",
+                        body: "Test build ${currentBuild.currentResult}.",
                         to: 'maxly746@gmail.com',
                         attachLog: true
                     )
@@ -34,8 +34,8 @@ pipeline {
             post {
                 always {
                     emailext(
-                        subject: "Build ${currentBuild.currentResult}",
-                        body: "Build ${currentBuild.currentResult}.",
+                        subject: "Security build ${currentBuild.currentResult}",
+                        body: "Security build ${currentBuild.currentResult}.",
                         to: 'maxly746@gmail.com',
                         attachLog: true
                     )
