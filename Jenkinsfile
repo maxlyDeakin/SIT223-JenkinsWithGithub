@@ -11,6 +11,16 @@ pipeline {
             steps {
                 echo 'Running unit and integration tests...'
             }
+            post {
+                always {
+                    emailext(
+                        subject: "Build ${currentBuild.currentResult}",
+                        body: "Build ${currentBuild.currentResult}.",
+                        to: 'maxly746@gmail.com',
+                        attachLog: true
+                    )
+                }
+            }
         }
         stage('Code Analysis') {
             steps {
@@ -20,6 +30,15 @@ pipeline {
         stage('Security Scan') {
             steps {
                 echo 'Performing security scan...'
+            }
+            post {
+                always {
+                    emailext(
+                        subject: "Build ${currentBuild.currentResult}",
+                        body: "Build ${currentBuild.currentResult}.",
+                        to: 'maxly746@gmail.com',
+                        attachLog: true
+                    )
             }
         }
         stage('Deploy to Staging') {
@@ -36,18 +55,6 @@ pipeline {
             steps {
                 echo 'Deploying to production...'
             }
-        }
-    }
-
-    post {
-        always {
-            emailext(
-                subject: "Build ${currentBuild.fullDisplayName} - ${currentBuild.currentResult}",
-                body: """Build ${currentBuild.fullDisplayName} completed with status: ${currentBuild.currentResult}.
-                \nCheck console output at ${env.BUILD_URL} to view the results.""",
-                to: 'maxly746@gmail.com',
-                attachLog: true
-            )
         }
     }
 }
