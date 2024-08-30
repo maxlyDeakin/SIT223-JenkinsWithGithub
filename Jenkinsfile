@@ -52,7 +52,7 @@ pipeline {
                 subject: "Build ${currentBuild.fullDisplayName} - ${currentBuild.currentResult}",
                 body: """Build ${currentBuild.fullDisplayName} completed with status: ${currentBuild.currentResult}.
                 \nCheck console output at ${env.BUILD_URL} to view the results.""",
-                to: 'developer@example.com',
+                to: 'maxly746@gmail.com',
                 attachLog: true
             )
         }
