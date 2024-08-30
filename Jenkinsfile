@@ -4,12 +4,12 @@ pipeline {
     stages {
         stage('Build') {
             steps {
-                echo 'Building the project...'
+                echo 'Building project'
             }
         }
         stage('Tests') {
             steps {
-                echo 'Running unit and integration tests...'
+                echo 'Run unit and integration tests...'
             }
             post {
                 always {
@@ -24,12 +24,12 @@ pipeline {
         }
         stage('Code Analysis') {
             steps {
-                echo 'Analyzing the code...'
+                echo 'Analyze code...'
             }
         }
         stage('Security Scan') {
             steps {
-                echo 'Performing security scan...'
+                echo 'Perform security scan...'
             }
             post {
                 always {
@@ -44,17 +44,17 @@ pipeline {
         }
         stage('Deploy to Staging') {
             steps {
-                echo 'Deploying to staging...'
+                echo 'Deploy to staging'
             }
         }
         stage('Integration Tests on Staging') {
             steps {
-                echo 'Running integration tests on staging...'
+                echo 'Run integration tests on staging...'
             }
         }
         stage('Deploy to Production') {
             steps {
-                echo 'Deploying to production...'
+                echo 'Deploy to production...'
             }
         }
     }
